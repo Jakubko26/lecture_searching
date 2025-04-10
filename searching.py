@@ -28,10 +28,12 @@ def linear_search(sequence,number):
             pozice.append(index)
             kanal["index"] = pozice
             kanal["pocet"] = sequence.count(number)
-    return kanal 
-def main():
-    pass
+    return kanal
+def main(file_name,field,number):
+    a= read_data(file_name,field)
+    b= linear_search(a,number)
+    return print(f"{b}")
 
 
 if __name__ == '__main__':
-    main()
+    main("sequential.json","unordered_numbers",0)
