@@ -29,11 +29,35 @@ def linear_search(sequence,number):
             kanal["index"] = pozice
             kanal["pocet"] = sequence.count(number)
     return kanal
-def main(file_name,field,number):
-    a= read_data(file_name,field)
-    b= linear_search(a,number)
-    return print(f"{b}")
+
+def pattern_search(sequence,vzor):
+    kanal={}
+    pozice=[]
+    delka=len(vzor)
+    for i in range(len(sequence) - delka+1):
+        if sequence[i:i + delka] in sequence:
+            pozice.append(i)
+    kanal["idx"]= pozice
+    return kanal
+def binary_search(sequence,cislo):
+    for index,number in enumerate(sequence):
+        if number == cislo:
+            return print(f"čislo {cislo} se nachazi na pozici {index}")
+        else:
+            continue
+    if cislo not in sequence:
+        return print(f"None")
+
+
+
+def main(file_name, field, number,vzor,):
+     a = read_data(file_name, field)
+     b = linear_search(a, number)
+     c= pattern_search(a,vzor)
+     d= binary_search(a,number)
+     return print(f"{d}")
+
 
 
 if __name__ == '__main__':
-    main("sequential.json","unordered_numbers",0)
+    main("sequential.json","unordered_numbers",8,"ATA")
