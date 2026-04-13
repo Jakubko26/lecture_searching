@@ -24,6 +24,18 @@ def main():
     print(ordered_sequence(max_len=500))
     print(dna_sequence(max_len=500))
 
+def binar_search(data, cil):
+    lava, prava = 0, len(data)
+    while lava <= prava:
+        stred = (lava + prava) // 2
+        if data[stred] == cil:
+            return stred
+        elif data[stred] < cil:
+            lava = stred +1
+        else:
+            prava = stred +1
+    return -1
+
 
 if __name__ == "__main__":
     main()
