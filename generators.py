@@ -12,7 +12,7 @@ def ordered_sequence(max_len=100):
 def dna_sequence(max_len=100):
     return "".join(choices("ACGT", k=max_len))
 
-def linera_search(data, cil):
+def linear_search(data, cil):
     for i, x in enumerate(data):
         if x == cil:
             return i
@@ -43,6 +43,18 @@ def pattern_search(text, pattern):
             pozice.append(i)
     return pozice
 
+def main():
+    nums = unordered_sequence(20)
+    sorted_nums =ordered_sequence(20)
+    dna = dna_sequence(100)
+
+    print("Unsorted:", nums)
+    print("Sorted:", sorted_nums)
+    print("DNA:", dna)
+
+    print("\nLinear search:", linear_search(nums, nums[3]))
+    print("Binary search:", binar_search(sorted_nums, sorted_nums[5]))
+    print("Pattern search:", pattern_search(dna, dna[10:15]))
 
 if __name__ == "__main__":
     main()
