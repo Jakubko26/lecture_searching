@@ -11,9 +11,9 @@ def read_data(file_name, field):
     return data.get(field,None)
 
 def main():
-    unordered = read_data("data.json", "unordered_numbers")
-    ordered = read_data("data.json", "ordered_numbers")
-    dna = read_data("data.json", "dna_sequence")
+    unordered = read_data("sequential.json", "unordered_numbers")
+    ordered = read_data("sequential.json", "ordered_numbers")
+    dna = read_data("sequential.json", "dna_sequence")
 
     print("Unordered numbers:", unordered[:10] if unordered else None)
     print("Ordered numbers:", ordered[:10] if ordered else None)
