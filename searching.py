@@ -23,6 +23,15 @@ def measure(func, *args, repeat=5):
         total  += (end - start)
     return total / repeat
 
+sizes = [100, 500, 1000, 5000, 10000]
+times = [0.00001, 0.00003, 0.00006, 0.00031, 0.00067]
+
+plt.plot(sizes, times)
+
+plt.xlabel("Velikost vstupu")
+plt.ylabel("Čas [s]")
+plt.title("Ukázkový graf měření")
+plt.show()
 def main():
     data = read_data("sequential.json", "unordered_numbers")
     sorted_data = read_data("sequential.json", "ordered_numbers")
@@ -30,24 +39,9 @@ def main():
 
     sizes = [100, 500, 1000, 5000, 10000]
 
-    linear_times = []
-    binary_times = []
-    set_times = []
 
-    for n in sizes:
-        sample = data[:min(n, len(data))]
-        sorted_sample = sorted_data[:min(n, len(sorted_data))]
-
-        target = sample[len(sample) // 2]
-        s = set(sample)
-
-        linear_times.append(measure(linear_search, sample, target))
-        binary_times.append(measure(binar_search, sorted_sample, target))
-        set_times.append(measure(pattern_search, s, target))
-
-        print(f"Hotovo n = {n}")
-    plt.plot(sizes, linear_times, label="Linear search")
-    plt.plot(sizes, binary_times, label="Binar search")
+    plt.plot(sizes, linear_search(), label="Linear search")
+    plt.plot(sizes, binary_s   , label="Binar search")
     plt.plot(sizes, set_times, label="Pattern search")
 
     plt.xlabel("Veľkosť vstupu")
