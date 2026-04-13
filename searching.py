@@ -1,5 +1,8 @@
 from pathlib import Path
 import json
+import time
+import random
+import matplotlib.pyplot as plt
 
 def read_data(file_name, field):
     file_cesta = Path.cwd() / file_name
@@ -9,6 +12,15 @@ def read_data(file_name, field):
     with open(file_cesta, "r", encoding="utf=8") as subor:
         data = json.load(subor)
     return data.get(field,None)
+def measure(func, *args, repeat=5):
+    total = 0
+
+    for _ in range(repeat):
+        start = time.perf_counter()
+        func(*args)
+        end = time.perf_counter()
+        total  += (end - start)
+    return total / repeat
 
 def main():
     unordered = read_data("sequential.json", "unordered_numbers")
