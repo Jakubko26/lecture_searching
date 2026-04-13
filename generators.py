@@ -12,6 +12,12 @@ def ordered_sequence(max_len=100):
 def dna_sequence(max_len=100):
     return "".join(choices("ACGT", k=max_len))
 
+def linera_search(data, cil):
+    for i, x in enumerate(data):
+        if x == cil:
+            return i
+    return -1
+
 
 def main():
     print(unordered_sequence(max_len=500))
