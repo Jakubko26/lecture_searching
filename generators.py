@@ -35,6 +35,13 @@ def binar_search(data, cil):
         else:
             prava = stred +1
     return -1
+def pattern_search(text, pattern):
+    pozice = []
+    n, m = len(text), len(pattern)
+    for i in range(n - m +1):
+        if text[i:i + m] == pattern:
+            pozice.append(i)
+    return pozice
 
 
 if __name__ == "__main__":
